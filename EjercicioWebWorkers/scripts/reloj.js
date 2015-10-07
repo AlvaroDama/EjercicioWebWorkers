@@ -1,5 +1,5 @@
 ﻿var reloj = new Date();
-var boolPenin = undefined;
+var boolPenin = false;
 
 function mostrarHoras() {
 
@@ -9,15 +9,12 @@ function mostrarHoras() {
         reloj.setHours(reloj.getHours() - 1);
     
     self.postMessage(reloj);
-    setTimeout("mostrarHoras()", 1000);
+    setTimeout("mostrarHoras()", 800);
 }
 
 self.onmessage = function (e) {
     if (e.data == "insular") {
-        if (!boolPenin)
-            boolPenin = "true";
-        else
-            boolPenin = undefined;
+        boolPenin = !boolPenin;
     }
 }
 
